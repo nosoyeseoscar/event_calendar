@@ -1,0 +1,37 @@
+.label {
+    margin: 10px;
+}
+
+.input {
+    display: block;
+    height: 50px;
+    width: 90%;
+    margin: 5px auto;
+    border: none;
+    border-bottom: 1px solid #aaadc3;
+}
+
+.input::placeholder {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.input:hover,
+.input:focus,
+.input:active,
+.input:focus {
+    color: #2238ff;
+    outline: none;
+    border-bottom: 1px solid #2238ff;
+}
+
+.input:active::placeholder,
+.input:focus::placeholder,
+.input:hover::placeholder {
+    color: #2238ff;
+    position: relative;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
