@@ -29,26 +29,26 @@ const AddForm = () => {
               className={styles.input}
               placeholder="Nombre del evento"
             />
-          <br />
-          <h3>
-          Fecha de inicio:
-            </h3>
+            <h4 className={styles.label}>
+                Fecha de inicio:
+            </h4>
             <input
               type="date"
               value={startDate}
+              className={styles.input}
               onChange={(e) => setStartDate(e.target.value)}
             />
-          </label>
-          <br />
-            <h3>
+
+            <h4 className={styles.label}>
             Fecha de fin:
-            </h3>
+            </h4>
             <input
               type="date"
               value={endDate}
+              className={styles.input}
               onChange={(e) => setEndDate(e.target.value)}
             />
-          <br />
+
             <input
               type="text"
               value={requesterName}
@@ -56,7 +56,7 @@ const AddForm = () => {
               onChange={(e) => setRequesterName(e.target.value)}
               placeholder="Nombre del solicitante"
             />
-          <br />
+
             <input
               type="email"
               value={requesterEmail}

@@ -1,14 +1,11 @@
-.label {
-    margin: 10px;
-}
-
 .input {
     display: block;
-    height: 50px;
+    height: 60px;
     width: 90%;
-    margin: 5px auto;
+    margin: 5addpx auto 25px auto;
     border: none;
     border-bottom: 1px solid #aaadc3;
+    font-size: 20px;
 }
 
 .input::placeholder {
@@ -34,4 +31,9 @@
     position: relative;
     -webkit-transform: translateY(-20px);
     transform: translateY(-20px);
+}
+
+.label {
+    margin: 0px auto;
+    width: 90%;
 }
