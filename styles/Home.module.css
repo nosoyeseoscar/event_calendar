@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+}
+
+.section {
+    flex: 1;
+    height: 100vh;
+}
+
+.dotted {
+    border-width: 1px;
+    border-style: dotted;
+    border-color: red;
+}
+
+.addEvent {
+    min-width: 200px;
+}

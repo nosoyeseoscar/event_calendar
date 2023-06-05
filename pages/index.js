@@ -1,4 +1,6 @@
 import Calendar from "../components/Calendar"
+import AddEvent from "../components/AddEvent"
+import styles from '../styles/Home.module.css'
 
 const eventList = [
   {
@@ -19,9 +21,18 @@ const eventList = [
 ]
 
 export default function Home() {
-  return (
-    <div className="calendario">
-      <Calendar events={eventList}/>
-    </div>
+  return ( 
+  <div>
+    <header>
+    </header>
+    <main className={styles.container}>
+      <section className={`${styles.dotted} ${styles.section} ${styles.addEvent}`}>
+        <AddEvent></AddEvent>
+      </section>
+      <section className={`${styles.dotted} ${styles.section}`}>
+        <Calendar events={eventList}/>
+      </section>
+    </main>
+  </div>
   )
 }
