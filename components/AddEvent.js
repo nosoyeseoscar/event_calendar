@@ -4,16 +4,22 @@ import addIcon from '../public/circle-plus.svg'
 
 import AddForm from './addForm'
 
-const AddEvent = () => {
+const AddEvent = ({isOpen, changeOpen}) => {
+    const handleIconClick = () => {
+        changeOpen(!isOpen)
+    }
+
     return(
-        <div className={styles.dotted}>
+        <div className={styles.container}>
             <Image 
                 src={addIcon} 
                 alt="AddEvent" 
                 width={50}
                 height={50} 
+                className={ isOpen? `${styles["icon-clicked"]} ${styles.icon}`: `${styles['icon-normnal']} ${styles.icon}` }
+                onClick={handleIconClick}
             />
-            <AddForm></AddForm>
+           { isOpen ? <AddForm/>:null }
         </div>
     )
 }

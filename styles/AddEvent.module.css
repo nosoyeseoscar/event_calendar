@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    align-self: flex-end;
+    margin: 10px;
+    transition: all 0.4s;
+}
+
+.icon:hover {
+    width: 60px;
+    height: 60px;
+}
+
+.icon-clicked {
+    transform: rotate(405deg);
+}
+
+.icon-normal {
+    transform: rotate(0deg);
+}

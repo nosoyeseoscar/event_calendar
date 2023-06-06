@@ -2,7 +2,7 @@
     display: block;
     height: 60px;
     width: 90%;
-    margin: 5addpx auto 25px auto;
+    margin: 5px auto 25px auto;
     border: none;
     border-bottom: 1px solid #aaadc3;
     font-size: 20px;
@@ -36,4 +36,26 @@
 .label {
     margin: 0px auto;
     width: 90%;
+    font-size: 20px;
+}
+
+.send {
+    display: block;
+    background: #4856d5;
+    cursor: pointer;
+    border: none;
+    padding: 16px 32px;
+    color: #FFF;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    height: 60px;
+    width: 50%;
+    margin: 10px auto;
+    font-size: 15px;
+}
+
+.send:hover {
+    font-size: 20px;
+    background: #5a69ee;
 }

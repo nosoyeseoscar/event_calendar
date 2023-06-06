@@ -65,8 +65,8 @@ const AddForm = () => {
               placeholder="Correo del solicitante"
             />
           
-          <br />
-          <button type="submit">Enviar</button>
+
+          <button type="submit" className={styles.send}>Agendar</button>
         </form>
       );
 }

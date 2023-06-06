@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Calendar from "../components/Calendar"
 import AddEvent from "../components/AddEvent"
 import styles from '../styles/Home.module.css'
@@ -21,15 +22,21 @@ const eventList = [
 ]
 
 export default function Home() {
+
+  const [eventOpen, setEventOpen] = useState(false) //estado para guardar abrir capturar evento.
+  
   return ( 
   <div>
     <header>
+      
     </header>
     <main className={styles.container}>
-      <section className={`${styles.dotted} ${styles.section} ${styles.addEvent}`}>
-        <AddEvent></AddEvent>
+      <section 
+        className={eventOpen ? `${styles['event-open']} ${styles.section}`
+          :`${styles['event-close']} ${styles.section}`}>
+        <AddEvent isOpen={eventOpen} changeOpen={setEventOpen}></AddEvent>
       </section>
-      <section className={`${styles.dotted} ${styles.section}`}>
+      <section className={`${styles.section}`}>
         <Calendar events={eventList}/>
       </section>
     </main>
