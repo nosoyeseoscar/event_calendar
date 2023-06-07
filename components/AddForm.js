@@ -8,6 +8,7 @@ const AddForm = (currentEvent) => {
     const [endDate, setEndDate] = useState(todayDate())// fecha del final del evento una hora más que la hora actual
     const [requesterName, setRequesterName] = useState('Administración') //quién pide el evento, por default Adminsitracion
     const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
+    /*  #TODO: add values for hours in useState */
 
     useEffect(() => { 
       const formattedDate = todayDate()    
@@ -18,7 +19,7 @@ const AddForm = (currentEvent) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+        /*  #TODO: Summit function*/
         // Realizar acciones con los datos del formulario
         console.log('Nombre del evento:', eventName);
         console.log('Fecha de inicio:', startDate);
@@ -38,6 +39,7 @@ const AddForm = (currentEvent) => {
             />
 
             <div className={styles['check-container']}>
+              {/* #TODO: add function to hide hours in events */ }
               <input type="checkbox" id="all-day" className={styles.check}/>
               <label for="all-day" className={styles.label}>Todo el día</label>
             </div>
@@ -54,6 +56,7 @@ const AddForm = (currentEvent) => {
 
             <input
               type="time"
+             /*  #TODO: add values and useState */
               /* value={eventName}
               onChange={(e) => setEventName(e.target.value)}
               placeholder="Nombre del evento" */
@@ -72,6 +75,7 @@ const AddForm = (currentEvent) => {
 
             <input
               type="time"
+              /*  #TODO: add values and useState */
               /* value={eventName}
               onChange={(e) => setEventName(e.target.value)}
               placeholder="Nombre del evento" */
