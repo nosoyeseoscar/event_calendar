@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react"
 import styles from '../styles/AddForm.module.css'
+import { todayDate } from "../libraries/dateManipulation"
 
-const AddForm = () => {
+const AddForm = (currentEvent) => {
     const [eventName, setEventName] = useState('')//Nombre del evento
-    const [startDate, setStartDate] = useState('')//fecha de inicio del evento
-    const [endDate, setEndDate] = useState('')// fecha del final del evento una hora más que la hora actual
+    const [startDate, setStartDate] = useState(todayDate())//fecha de inicio del evento
+    const [endDate, setEndDate] = useState(todayDate())// fecha del final del evento una hora más que la hora actual
     const [requesterName, setRequesterName] = useState('Administración') //quién pide el evento, por default Adminsitracion
     const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
 
-    useEffect(() => {
-      //use efect para desmembrar la fecha actual
-      const currentDateObj = new Date();
-      const year = currentDateObj.getFullYear();
-      const month = String(currentDateObj.getMonth() + 1).padStart(2, '0');
-      const day = String(currentDateObj.getDate()).padStart(2, '0');
-      const formattedDate = `${year}-${month}-${day}`;
-      
+    useEffect(() => { 
+      const formattedDate = todayDate()    
+      console.log(formattedDate); 
       setStartDate(formattedDate);
-      setEndDate(formattedDate);
+      setEndDate(formattedDate); 
     }, []);
 
     const handleSubmit = (e) => {

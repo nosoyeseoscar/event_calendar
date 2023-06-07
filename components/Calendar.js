@@ -13,20 +13,22 @@ const headerConfiguration = {
     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
 }
 
-const Calendar = ({events})=>{
+const Calendar = ({events, setCurrentIdEvent})=>{
 
     /* const handleDateClick = (arg) => { // bind with an arrow function       
        alert(arg.dateStr)
     } */
 
-    const handleEventClick = ({event:{title, start, end, allDay, extendedProps}}) => {
-        //alert(info.event)
-        const {solicitante} = extendedProps
+    const handleEventClick = ({event:{id,title, start, end, allDay, extendedProps}}) => {
+        //alert(id)
+        /* const {solicitante} = extendedProps
         console.log(title)
         console.log(solicitante);
         console.log(start)
         console.log(end)
-        console.log(allDay);
+        console.log(allDay); */
+        setCurrentIdEvent(id)
+        console.log(`El id del evento es: ${id}`);
     }
     return (
         <div className={styles.calendario}>
