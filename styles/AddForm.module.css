@@ -67,9 +67,20 @@
 }
 
 .check-container {
-    width: 90%;
-    padding-right: 5px;
-    margin-bottom: 15px;
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #aaadc3;
+}
+
+.check-container:hover,
+.check-container:focus,
+.check-container:active,
+.check-container:focus {
+    color: #2238ff;
+    outline: none;
+    border-bottom: 1px solid #2238ff;
 }
 
 .check {

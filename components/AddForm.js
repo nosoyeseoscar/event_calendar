@@ -36,6 +36,12 @@ const AddForm = (currentEvent) => {
               className={styles.input}
               placeholder="Nombre del evento"
             />
+
+            <div className={styles['check-container']}>
+              <input type="checkbox" id="all-day" className={styles.check}/>
+              <label for="all-day" className={styles.label}>Todo el día</label>
+            </div>
+
             <h4 className={styles.label}>
                 Fecha de inicio:
             </h4>
@@ -44,6 +50,14 @@ const AddForm = (currentEvent) => {
               value={startDate}
               className={styles.input}
               onChange={(e) => setStartDate(e.target.value)}
+            />
+
+            <input
+              type="time"
+              /* value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+              placeholder="Nombre del evento" */
+              className={styles.input}
             />
 
             <h4 className={styles.label}>
@@ -55,10 +69,15 @@ const AddForm = (currentEvent) => {
               className={styles.input}
               onChange={(e) => setEndDate(e.target.value)}
             />
-            <div className={styles['check-container']}>
-              <input type="checkbox" id="all-day" className={styles.check}/>
-              <label for="all-day" className={styles.label}>Todo el día</label>
-            </div>
+
+            <input
+              type="time"
+              /* value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+              placeholder="Nombre del evento" */
+              className={styles.input}
+            />
+            
 
             <input
               type="text"
