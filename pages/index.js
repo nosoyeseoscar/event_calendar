@@ -9,15 +9,46 @@ const eventList = [
     date: '2023-06-05',
     start: '2023-06-05',
     end: '2023-06-07',
+    solicitante: 'Oscar',
+    allDay: true
   },
-  { title: 'Todo el día', date: '2023-06-01' },
-  { title: 'event 2', date: '2023-06-02' },
-  { title: 'event 4', date: '2023-06-01' },
+  { 
+    title: 'Todo el día', 
+    date: '2023-06-01',
+    start: '2023-06-01',
+    end: '2023-06-01',
+    solicitante: 'Administración',
+    allDay: true
+  },
+  { title: 'event 2', 
+    date: '2023-06-02', 
+    start: '2023-06-02',
+    end: '2023-06-02',
+    solicitante: 'Forestal', 
+    allDay: true 
+  },
+  { title: 'event 4', 
+    date: '2023-06-01', 
+    start: '2023-06-01',
+    end: '2023-06-01',
+    solicitante: 'Administración', 
+    allDay: true 
+  },
   {
     title: 'evento 5',
     date: '2023-06-02',
     start: '2023-06-02T08:00:00',
     end: '2023-06-02T09:00:00',
+    solicitante: 'Amaurant',
+    allDay: false
+  },
+  {
+    title: 'evento 10',
+    date: '2023-06-07',
+    start: '2023-06-07T08:00:00',
+    end: '2023-06-07T10:00:00',
+    solicitante: 'Otro 1',
+    allDay: false
   },
 ]
 

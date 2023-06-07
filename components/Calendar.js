@@ -15,8 +15,18 @@ const headerConfiguration = {
 
 const Calendar = ({events})=>{
 
-    const handleDateClick = (arg) => { // bind with an arrow function       
+    /* const handleDateClick = (arg) => { // bind with an arrow function       
        alert(arg.dateStr)
+    } */
+
+    const handleEventClick = ({event:{title, start, end, allDay, extendedProps}}) => {
+        //alert(info.event)
+        const {solicitante} = extendedProps
+        console.log(title)
+        console.log(solicitante);
+        console.log(start)
+        console.log(end)
+        console.log(allDay);
     }
     return (
         <div className={styles.calendario}>
@@ -25,11 +35,12 @@ const Calendar = ({events})=>{
              initialView="dayGridMonth"
              weekends={false}
              events={events}
-             dateClick={handleDateClick}
+             /* dateClick={handleDateClick} */
              locale={esLocale}
              headerToolbar = {headerConfiguration}
              navLinks={true}
              dayMaxEvents ={true} 
+             eventClick={handleEventClick}
            />
         </div>
     )
