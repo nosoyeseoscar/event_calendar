@@ -1,13 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styles from '../styles/AddForm.module.css'
 
 const AddForm = () => {
     const [eventName, setEventName] = useState('')//Nombre del evento
-    const [startDate, setStartDate] = useState(new Date())//fecha de inicio del evento
-    const [endDate, setEndDate] = useState(new Date())// fecha del final del evento una hora más que la hora actual
-    const [requesterName, setRequesterName] = useState('') //quién pide el evento, por default Adminsitracion
+    const [startDate, setStartDate] = useState('')//fecha de inicio del evento
+    const [endDate, setEndDate] = useState('')// fecha del final del evento una hora más que la hora actual
+    const [requesterName, setRequesterName] = useState('Administración') //quién pide el evento, por default Adminsitracion
     const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
 
+    useEffect(() => {
+      //use efect para desmembrar la fecha actual
+      const currentDateObj = new Date();
+      const year = currentDateObj.getFullYear();
+      const month = String(currentDateObj.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDateObj.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      
+      setStartDate(formattedDate);
+      setEndDate(formattedDate);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +76,6 @@ const AddForm = () => {
               placeholder="Correo del solicitante"
             />
           
-
           <button type="submit" className={styles.send}>Agendar</button>
         </form>
       );

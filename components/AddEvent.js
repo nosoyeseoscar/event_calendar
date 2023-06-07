@@ -5,6 +5,7 @@ import addIcon from '../public/circle-plus.svg'
 import AddForm from './addForm'
 
 const AddEvent = ({isOpen, changeOpen}) => {
+    
     const handleIconClick = () => {
         changeOpen(!isOpen)
     }

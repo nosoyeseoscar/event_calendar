@@ -10,7 +10,7 @@ const eventList = [
     start: '2023-06-05',
     end: '2023-06-07',
   },
-  { title: 'event 1', date: '2023-06-01' },
+  { title: 'Todo el día', date: '2023-06-01' },
   { title: 'event 2', date: '2023-06-02' },
   { title: 'event 4', date: '2023-06-01' },
   {
@@ -24,20 +24,21 @@ const eventList = [
 export default function Home() {
 
   const [eventOpen, setEventOpen] = useState(false) //estado para guardar abrir capturar evento.
+  const [newEventDate, setNewEventDate] = useState('') //estado para guardar nuevo evento pero solo la fecha.
   
   return ( 
   <div>
     <header>
-      
+      {newEventDate}
     </header>
     <main className={styles.container}>
       <section 
         className={eventOpen ? `${styles['event-open']} ${styles.section}`
           :`${styles['event-close']} ${styles.section}`}>
-        <AddEvent isOpen={eventOpen} changeOpen={setEventOpen}></AddEvent>
+        <AddEvent isOpen={eventOpen} changeOpen={setEventOpen} defaultDate={newEventDate}></AddEvent>
       </section>
       <section className={`${styles.section}`}>
-        <Calendar events={eventList}/>
+        <Calendar events={eventList} />
       </section>
     </main>
   </div>

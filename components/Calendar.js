@@ -11,13 +11,13 @@ const headerConfiguration = {
     left: 'prev,next today',
     center: 'title',
     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-  }
-
-const handleDateClick = (arg) => { // bind with an arrow function
-    alert(arg.dateStr)
 }
 
-const Calendar = (events)=>{
+const Calendar = ({events})=>{
+
+    const handleDateClick = (arg) => { // bind with an arrow function       
+       alert(arg.dateStr)
+    }
     return (
         <div className={styles.calendario}>
             <FullCalendar
