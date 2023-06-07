@@ -62,7 +62,7 @@ const eventList = [
 
 export default function Home() {
   const [eventOpen, setEventOpen] = useState(false) //estado para guardar abrir capturar evento.
-  const [newEventDate, setNewEventDate] = useState('') //estado para guardar nuevo evento pero solo la fecha.
+  //const [newEventDate, setNewEventDate] = useState('') //estado para guardar nuevo evento pero solo la fecha.
   const [currentIdEvent, setCurrentIdEvent] = useState('')//estado para guardar el evento actual del click en un evento.
 
     
@@ -86,7 +86,7 @@ export default function Home() {
         <AddEvent 
           isOpen={eventOpen} 
           changeOpen={setEventOpen} 
-          defaultDate={newEventDate}
+         /*  defaultDate={newEventDate} */
           currentEvent={findEvent(currentIdEvent)}
         />
       </section>

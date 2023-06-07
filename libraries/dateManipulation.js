@@ -24,9 +24,8 @@ function generarID() {
   
     const id = parseInt(`${anio}${mes}${dia}${hora}${minutos}${segundos}${milisegundos}${numeroAleatorio}`, 10);
     return id;
-  }
+}
 
-  
 export {extractDatetoday, todayDate, generarID}
 
 

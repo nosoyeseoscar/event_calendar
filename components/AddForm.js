@@ -55,6 +55,10 @@ const AddForm = (currentEvent) => {
               className={styles.input}
               onChange={(e) => setEndDate(e.target.value)}
             />
+            <div className={styles['check-container']}>
+              <input type="checkbox" id="all-day" className={styles.check}/>
+              <label for="all-day" className={styles.label}>Todo el día</label>
+            </div>
 
             <input
               type="text"

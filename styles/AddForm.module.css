@@ -1,7 +1,7 @@
 .input {
     display: block;
     height: 60px;
-    width: 90%;
+    width: 100%;
     margin: 5px auto 25px auto;
     border: none;
     border-bottom: 1px solid #aaadc3;
@@ -35,8 +35,9 @@
 
 .label {
     margin: 0px auto;
-    width: 90%;
+    width: 100%;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .send {
@@ -58,4 +59,20 @@
 .send:hover {
     font-size: 20px;
     background: #5a69ee;
+}
+
+.forma {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.check-container {
+    width: 90%;
+    padding-right: 5px;
+    margin-bottom: 15px;
+}
+
+.check {
+    transform: scale(1.7);
+    margin-right: 15px;
 }
