@@ -1,31 +1,49 @@
 import { useState, useEffect } from "react"
 import styles from '../styles/AddForm.module.css'
-import { todayDate } from "../libraries/dateManipulation"
+import { extractDate, fullDate } from "../libraries/dateManipulation"
 
-const AddForm = (currentEvent) => {
+const AddForm = ({currentEvent, newEventHandler, events}) => {
     const [eventName, setEventName] = useState('')//Nombre del evento
-    const [startDate, setStartDate] = useState(todayDate())//fecha de inicio del evento
-    const [endDate, setEndDate] = useState(todayDate())// fecha del final del evento una hora más que la hora actual
+    const [startDate, setStartDate] = useState(new Date())//fecha completa de inicio del evento
+    const [endDate, setEndDate] = useState(new Date())// fecha completa del final del evento una hora más que la hora actual
+    const [startDay, setStartDay] = useState('')//día de inicio.
+    const [startTime, setStartTime] = useState('')//hora de inicio.
+    const [endDay, setEndDay] = useState('')//día de inicio.
+    const [endTime, setEndTime] = useState('')//hora de inicio.
     const [requesterName, setRequesterName] = useState('Administración') //quién pide el evento, por default Adminsitracion
     const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
-    /*  #TODO: add values for hours in useState */
-
-    useEffect(() => { 
-      const formattedDate = todayDate()    
-      console.log(formattedDate); 
-      setStartDate(formattedDate);
-      setEndDate(formattedDate); 
-    }, []);
+    const [isAllDay, setIsAllDay] = useState(false)//estado para manejar el checkbox allDay
+  
+  /* useEffect(() => { 
+      /* const formattedDate = todayDate()    
+      console.log(formattedDate);  */
+     /* console.log(eventList);
+    }, []); */
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        /*  #TODO: Summit function*/
-        // Realizar acciones con los datos del formulario
-        console.log('Nombre del evento:', eventName);
+        e.preventDefault()
+       
+        setStartDate(fullDate(startDay,startTime))
+        setEndDate(fullDate(endDay,endTime)) 
+        const newEvent = {
+          id: '008',
+          title: eventName,
+          
+          start: startDate,
+          end: endDate,
+          solicitante: requesterName,
+          email: requesterEmail,
+          allDay: isAllDay
+        }
+
+        newEventHandler( () =>[...events,newEvent] )
+
+        
+        /* console.log('Nombre del evento:', eventName);
         console.log('Fecha de inicio:', startDate);
         console.log('Fecha de fin:', endDate);
         console.log('Nombre del solicitante:', requesterName);
-        console.log('Correo del solicitante:', requesterEmail);
+        console.log('Correo del solicitante:', requesterEmail); */
       };
     
       return (
@@ -39,9 +57,14 @@ const AddForm = (currentEvent) => {
             />
 
             <div className={styles['check-container']}>
-              {/* #TODO: add function to hide hours in events */ }
-              <input type="checkbox" id="all-day" className={styles.check}/>
-              <label for="all-day" className={styles.label}>Todo el día</label>
+              <input 
+                type="checkbox" 
+                id="all-day" 
+                className= {styles.check} 
+                checked  = {isAllDay}
+                onChange = {(e)=>setIsAllDay(e.target.checked)}
+              />
+              <label htmlFor="all-day" className={styles.label}>Todo el día</label>
             </div>
 
             <h4 className={styles.label}>
@@ -49,18 +72,18 @@ const AddForm = (currentEvent) => {
             </h4>
             <input
               type="date"
-              value={startDate}
+              value={startDay}
               className={styles.input}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={(e) => setStartDay(e.target.value)}
             />
 
             <input
               type="time"
-             /*  #TODO: add values and useState */
-              /* value={eventName}
-              onChange={(e) => setEventName(e.target.value)}
-              placeholder="Nombre del evento" */
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              /* placeholder="Nombre del evento"  */
               className={styles.input}
+              disabled={isAllDay}
             />
 
             <h4 className={styles.label}>
@@ -68,18 +91,17 @@ const AddForm = (currentEvent) => {
             </h4>
             <input
               type="date"
-              value={endDate}
+              value={endDay}
               className={styles.input}
-              onChange={(e) => setEndDate(e.target.value)}
+              onChange={(e) => setEndDay(e.target.value)}
             />
 
             <input
               type="time"
-              /*  #TODO: add values and useState */
-              /* value={eventName}
-              onChange={(e) => setEventName(e.target.value)}
-              placeholder="Nombre del evento" */
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
               className={styles.input}
+              disabled={isAllDay}
             />
             
 

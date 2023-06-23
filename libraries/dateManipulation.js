@@ -1,4 +1,4 @@
-const extractDatetoday = (date) => {
+const extractDate = (date) => {
     //function to extract date in format yyyy-mm-dd
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -8,7 +8,7 @@ const extractDatetoday = (date) => {
 }
 
 const todayDate = ()=>{
-    return extractDatetoday(new Date())
+    return extractDate(new Date())
 }
 
 function generarID() {
@@ -26,7 +26,13 @@ function generarID() {
     return id;
 }
 
-export {extractDatetoday, todayDate, generarID}
+function fullDate (date, time){
+
+  return new Date(`${date}T${time}:00`);
+    
+}
+
+export {extractDate, todayDate, generarID, fullDate}
 
 
 

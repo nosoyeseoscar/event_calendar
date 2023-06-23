@@ -3,7 +3,7 @@ import Calendar from "../components/Calendar"
 import AddEvent from "../components/AddEvent"
 import styles from '../styles/Home.module.css'
 
-const eventList = [
+const eventDummyList = [
   {
     id: '001',
     title: 'evento 001',
@@ -62,10 +62,8 @@ const eventList = [
 
 export default function Home() {
   const [eventOpen, setEventOpen] = useState(false) //estado para guardar abrir capturar evento.
-  //const [newEventDate, setNewEventDate] = useState('') //estado para guardar nuevo evento pero solo la fecha.
+  const [eventList, setEventList] = useState(eventDummyList)//lista de eventos
   const [currentIdEvent, setCurrentIdEvent] = useState('')//estado para guardar el evento actual del click en un evento.
-
-    
 
   const findEvent = (id) => {
     const event = eventList.find( event => event.id === id)
@@ -87,6 +85,8 @@ export default function Home() {
           isOpen={eventOpen} 
           changeOpen={setEventOpen} 
          /*  defaultDate={newEventDate} */
+          newEventHandler = {setEventList}
+          eventList = {eventList}
           currentEvent={findEvent(currentIdEvent)}
         />
       </section>
