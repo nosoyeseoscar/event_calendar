@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import styles from '../styles/AddForm.module.css'
-import { extractDate, fullDate } from "../libraries/dateManipulation"
+import { extractDate, fullDate, addHour, generarID } from "../libraries/dateManipulation"
 
 const AddForm = ({currentEvent, newEventHandler, events}) => {
     const [eventName, setEventName] = useState('')//Nombre del evento
-    const [startDate, setStartDate] = useState(new Date())//fecha completa de inicio del evento
-    const [endDate, setEndDate] = useState(new Date())// fecha completa del final del evento una hora más que la hora actual
+    const [startDate, setStartDate] = useState('')//fecha completa de inicio del evento
+    const [endDate, setEndDate] = useState('')// fecha completa del final del evento una hora más que la hora actual
     const [startDay, setStartDay] = useState('')//día de inicio.
     const [startTime, setStartTime] = useState('')//hora de inicio.
     const [endDay, setEndDay] = useState('')//día de inicio.
@@ -19,18 +19,30 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
       console.log(formattedDate);  */
      /* console.log(eventList);
     }, []); */
+    const handleBlurDay = () => {
+      /* actualiza día de fin para mejor captura */
+      setEndDay(startDay)
+    }
+
+    const handleBlurTime = () => {
+      /* Actualiza tiempo mas una hora para mejor captura */
+      setEndTime(addHour(startTime))
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const newStartDate = fullDate(startDay,startTime)
+        const newEndDate = fullDate(endDay,endTime)
        
-        setStartDate(fullDate(startDay,startTime))
-        setEndDate(fullDate(endDay,endTime)) 
+       /*  setStartDate(newStartDate)
+        setEndDate(newEndDate)  */
+                
         const newEvent = {
-          id: '008',
-          title: eventName,
-          
-          start: startDate,
-          end: endDate,
+          id: generarID(),
+          title: eventName,  
+          date:startDay,        
+          start: newStartDate,
+          end: newEndDate,
           solicitante: requesterName,
           email: requesterEmail,
           allDay: isAllDay
@@ -38,17 +50,13 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
 
         newEventHandler( () =>[...events,newEvent] )
 
-        
-        /* console.log('Nombre del evento:', eventName);
-        console.log('Fecha de inicio:', startDate);
-        console.log('Fecha de fin:', endDate);
-        console.log('Nombre del solicitante:', requesterName);
-        console.log('Correo del solicitante:', requesterEmail); */
+        alert(`El evento ${newEvent.title} fue registrado.`)
       };
     
       return (
         <form onSubmit={handleSubmit} className={styles.forma}>
             <input
+            /* Input nombre evento */
               type="text"
               value={eventName}
               onChange={(e) => setEventName(e.target.value)}
@@ -58,6 +66,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
 
             <div className={styles['check-container']}>
               <input 
+              /* Todo el día */
                 type="checkbox" 
                 id="all-day" 
                 className= {styles.check} 
@@ -71,10 +80,12 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
                 Fecha de inicio:
             </h4>
             <input
+              /* fecha de inicio */
               type="date"
               value={startDay}
               className={styles.input}
               onChange={(e) => setStartDay(e.target.value)}
+              onBlur={handleBlurDay}
             />
 
             <input
@@ -84,6 +95,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
               /* placeholder="Nombre del evento"  */
               className={styles.input}
               disabled={isAllDay}
+              onBlur={handleBlurTime}
             />
 
             <h4 className={styles.label}>
@@ -104,7 +116,6 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
               disabled={isAllDay}
             />
             
-
             <input
               type="text"
               value={requesterName}

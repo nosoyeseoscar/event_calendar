@@ -26,13 +26,26 @@ function generarID() {
     return id;
 }
 
-function fullDate (date, time){
-
-  return new Date(`${date}T${time}:00`);
+function fullDate (day, time){
+    let newTime =''
+    //console.log(`el día a transformar es: ${day}`);
+    //console.log(`el día a tranformar 2 es: ${time}`);
+    time ? newTime=time:  newTime='00:00'
+    const full = `${day}T${newTime}:00`
+    //console.log(`fecha completa : ${full}`);
+  return full
     
 }
 
-export {extractDate, todayDate, generarID, fullDate}
+function addHour(hour) {
+    const newHour = new Date(`1970-01-01T${hour}:00`)
+    newHour.setHours(newHour.getHours() + 1)
+  
+    const returnHour = newHour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    return returnHour
+}
+
+export {extractDate, todayDate, generarID, fullDate, addHour}
 
 
 

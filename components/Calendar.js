@@ -29,6 +29,7 @@ const Calendar = ({events, setCurrentIdEvent})=>{
         console.log(allDay); */
         setCurrentIdEvent(id)
         console.log(`El id del evento es: ${id}`);
+        console.log("El listado actual de eventos es: ", events);
     }
     return (
         <div className={styles.calendario}>
