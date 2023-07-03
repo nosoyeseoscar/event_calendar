@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import styles from '../styles/AddForm.module.css'
 import { extractDate, fullDate, addHour, generarID } from "../libraries/dateManipulation"
+import { randomColor } from "../libraries/calendarStyle"
 
 const AddForm = ({currentEvent, newEventHandler, events}) => {
     const [eventName, setEventName] = useState('')//Nombre del evento
@@ -45,12 +46,13 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
           end: newEndDate,
           solicitante: requesterName,
           email: requesterEmail,
-          allDay: isAllDay
+          allDay: isAllDay,
+          color: randomColor()
         }
 
         newEventHandler( () =>[...events,newEvent] )
 
-        alert(`El evento ${newEvent.title} fue registrado.`)
+        alert(`El evento ${newEvent.title} fue registrado. Con el color: ${newEvent.eventColor}`)
       };
     
       return (
