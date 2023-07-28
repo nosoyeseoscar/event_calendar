@@ -15,10 +15,6 @@ const headerConfiguration = {
 
 const Calendar = ({events, setCurrentIdEvent})=>{
 
-    /* const handleDateClick = (arg) => { // bind with an arrow function       
-       alert(arg.dateStr)
-    } */
-
     const handleEventClick = ({event:{id,title, start, end, allDay, extendedProps}}) => {
         //alert(id)
         /* const {solicitante} = extendedProps

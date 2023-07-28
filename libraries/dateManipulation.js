@@ -45,7 +45,11 @@ function addHour(hour) {
     return returnHour
 }
 
-export {extractDate, todayDate, generarID, fullDate, addHour}
+function justHour (time) {
+    
+}
+
+export {extractDate, todayDate, generarID, fullDate, addHour, justHour}
 
 
 
