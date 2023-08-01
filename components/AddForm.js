@@ -13,7 +13,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
     const [endDay, setEndDay] = useState('')//día de inicio.
     const [endTime, setEndTime] = useState('')//hora de inicio.
     const [requesterName, setRequesterName] = useState('Administración') //quién pide el evento, por default Adminsitracion
-    const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
+    const [contact, setContact] = useState('') //correo de quién pide el evento
     const [isAllDay, setIsAllDay] = useState(false)//estado para manejar el checkbox allDay
   
     const handleBlurName = () => {
@@ -49,7 +49,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
           start: newStartDate,
           end: newEndDate,
           solicitante: requesterName,
-          email: requesterEmail,
+          contact: contact,
           allDay: isAllDay,
           color: randomColor()
         }
@@ -138,12 +138,12 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
             />
 
             <input
-              type="email"
-              /* Correo del quién solicita */
-              value={requesterEmail}
+              type="text"
+              /* Datos del quién solicita */
+              value={contact}
               className={styles.input}
-              onChange={(e) => setRequesterEmail(e.target.value)}
-              placeholder="Correo del solicitante"
+              onChange={(e) => setContact(e.target.value)}
+              placeholder="Datos de contacto"
             />
           
           <button type="submit" className={styles.send}>Agendar</button>

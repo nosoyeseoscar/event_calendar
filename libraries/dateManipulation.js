@@ -28,21 +28,34 @@ function generarID() {
 
 function fullDate (day, time){
     let newTime =''
-    //console.log(`el día a transformar es: ${day}`);
-    //console.log(`el día a tranformar 2 es: ${time}`);
+   /*  console.log(`el día a transformar es: ${day}`);
+    console.log(`la hora a tranformar 2 es: ${time}`); */
     time ? newTime=time:  newTime='00:00'
-    const full = `${day}T${newTime}:00`
+    const full = `${day}T${newTime}`
     //console.log(`fecha completa : ${full}`);
   return full
     
 }
 
 function addHour(hour) {
-    const newHour = new Date(`1970-01-01T${hour}:00`)
-    newHour.setHours(newHour.getHours() + 1)
-  
-    const returnHour = newHour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    return returnHour
+     // Descomponer el string en horas, minutos y segundos
+    const [hh, mm, ss] = hour.split(':').map(Number);
+
+    // Sumar una hora y ajustar los valores si es necesario
+    let nuevaHora = hh + 1;
+    if (nuevaHora >= 24) {
+        nuevaHora -= 24;
+    }
+
+    // Convertir a formato de dos dígitos (agregar ceros a la izquierda si es necesario)
+    const nuevaHoraStr = nuevaHora.toString().padStart(2, '0');
+    const nuevoMinutoStr = mm.toString().padStart(2, '0');
+    const nuevoSegundoStr = ss.toString().padStart(2, '0');
+
+    // Unir los componentes en el nuevo string de hora
+    const nuevaHoraCompleta = `${nuevaHoraStr}:${nuevoMinutoStr}:${nuevoSegundoStr}`;
+
+    return nuevaHoraCompleta;
 }
 
 function currentHour () {
