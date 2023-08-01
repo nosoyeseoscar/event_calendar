@@ -2,8 +2,10 @@
 import Image from 'next/image'
 import styles from '../styles/AddEvent.module.css'
 import addIcon from '../public/circle-plus.svg'
-
 import AddForm from './addForm'
+
+import {currentHour} from '../libraries/dateManipulation'
+
 
 const AddEvent = (
     {
@@ -16,7 +18,7 @@ const AddEvent = (
     
     const handleIconClick = () => {
         changeOpen(!isOpen)
-        /* console.log(eventList); */
+        console.log(eventList)
     }
 
     return(
@@ -36,6 +38,7 @@ const AddEvent = (
                         currentEvent={currentEvent} 
                         newEventHandler={newEventHandler} 
                         events = {eventList}
+                        currentHour={currentHour()}
                       />
                     :null 
             } 

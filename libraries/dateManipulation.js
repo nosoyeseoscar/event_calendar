@@ -45,11 +45,20 @@ function addHour(hour) {
     return returnHour
 }
 
-function justHour (time) {
-    
+function currentHour () {
+    /* Función que retorna el tiempo actual con minutos en cero */
+    const now = new Date()
+    now.setMinutes(0)
+    now.setSeconds(0)
+    now.setMilliseconds(0)
+    const localOffset = now.getTimezoneOffset() * 60000; // Convertimos el offset a milisegundos
+    const localTime = now.getTime() - localOffset; // Obtenemos el tiempo local
+    const localDate = new Date(localTime); // Creamos una nueva instancia con el tiempo local
+    const hour = localDate.toISOString().slice(11, 19)
+    return hour
 }
 
-export {extractDate, todayDate, generarID, fullDate, addHour, justHour}
+export {extractDate, todayDate, generarID, fullDate, addHour, currentHour}
 
 
 

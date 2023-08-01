@@ -1,7 +1,7 @@
 /* Componente Form de captura de evento */
 import { useState } from "react"
 import styles from '../styles/AddForm.module.css'
-import { extractDate, fullDate, addHour, generarID, justHour } from "../libraries/dateManipulation"
+import { extractDate, fullDate, addHour, generarID, currentHour } from "../libraries/dateManipulation"
 import { randomColor } from "../libraries/calendarStyle"
 
 const AddForm = ({currentEvent, newEventHandler, events}) => {
@@ -16,6 +16,9 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
     const [requesterEmail, setRequesterEmail] = useState('') //correo de quién pide el evento
     const [isAllDay, setIsAllDay] = useState(false)//estado para manejar el checkbox allDay
   
+    const handleBlurName = () => {
+      setStartTime(currentHour())
+    }
     const handleBlurDay = () => {
       /* actualiza día de fin para mejor captura */
       setEndDay(startDay)
@@ -28,9 +31,17 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const newStartDate = fullDate(startDay,startTime)
-        const newEndDate = fullDate(endDay,endTime)
-                
+        let newStartDate = ''
+        let newEndDate = ''
+
+        if (isAllDay){
+          newStartDate = startDay
+          newEndDate = endDay
+        }else{
+          newStartDate = fullDate(startDay,startTime)
+          newEndDate = fullDate(endDay,endTime)
+        }
+
         const newEvent = {
           id: generarID(), /* Genero un id aleatorio con base en la fecha */
           title: eventName,  
@@ -46,7 +57,8 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
         /* Agregamos el evento a la lista de eventos */
         newEventHandler( () =>[...events,newEvent] )
 
-        alert(`El evento ${newEvent.title} fue registrado con la fecha.`)
+        alert(`El evento ${newEvent.title} fue registrado.`)
+        console.log(newEvent);
 
       };
     
@@ -59,6 +71,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
               onChange={(e) => setEventName(e.target.value)}
               className={styles.input}
               placeholder="Nombre del evento"
+              onBlur={handleBlurName}
             />
 
             <div className={styles['check-container']}>
@@ -92,7 +105,7 @@ const AddForm = ({currentEvent, newEventHandler, events}) => {
               onChange={(e) => setStartTime(e.target.value)}
               className={styles.input}
               disabled={isAllDay}
-              r={handleBlurTime}
+              onBlur={handleBlurTime}
             />
 
             <h4 className={styles.label}>
